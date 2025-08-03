@@ -1,0 +1,55 @@
+<form class="w-1/2 mx-auto my-7" [formGroup]="paymentForm" (ngSubmit)="submitChekOutForm()">
+  <div class="mb-6">
+            <label for="details" class="block mb-2 text-sm font-medium text-gray-900">address details </label>
+            <input formControlName="details" type="text"  placeholder="Enter Address details" id="details" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"   />
+        </div>
+        @if(paymentForm.get('details')?.errors && paymentForm.get('details')?.touched ){
+          <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+          <span class="sr-only">Danger</span>
+          <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (paymentForm.get('details')?.getError('required')){
+                  <li>details is requierd</li>
+                }
+              </ul>
+          </div>
+        </div>
+        }
+  <div class="mb-6">
+            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone number</label>
+            <input formControlName="phone" type="tel"  placeholder="e.g., 01234567899" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"   />
+        </div>
+        @if(paymentForm.get('phone')?.errors && paymentForm.get('phone')?.touched ){
+          <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+          <span class="sr-only">Danger</span>
+          <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (paymentForm.get('phone')?.getError('required')){
+                  <li>phone is requierd</li>
+                }
+                @if (paymentForm.get('phone')?.getError('pattern')){
+                  <li>Enter a valid phone number</li>
+                }
+              </ul>
+          </div>
+        </div>
+        }
+  <div class="mb-6">
+            <label for="city" class="block mb-2 text-sm font-medium text-gray-900">city number</label>
+            <input formControlName="city" type="text"  placeholder="" id="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"   />
+        </div>
+        @if(paymentForm.get('city')?.errors && paymentForm.get('city')?.touched ){
+          <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+          <span class="sr-only">Danger</span>
+          <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (paymentForm.get('city')?.getError('required')){
+                  <li>city is requierd</li>
+                }
+              </ul>
+          </div>
+        </div>
+        }
+
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:bg-cyan-400 cursor-none">Pay</button>
+</form>

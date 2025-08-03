@@ -1,0 +1,11 @@
+<section class=" w-3/4 mx-auto">
+  <div class="grid grid-cols-5 gap-6 @max-sm:grid-cols-2 @max-xl:grid-cols-3 @max-4xl:grid-cols-4">
+  @for (brand of brands; track brand._id ) {
+  <div class="relative brand-img cursor-pointer overflow-hidden rounded-md group">
+    <img [src]="brand.image" [alt]="brand.name">
+    <div class=" absolute inset-0 bg-[#0000ff28] translate-y-[110%] rounded-md duration-200 group-hover:translate-y-0 ">
+    </div>
+  </div>
+}
+</div>
+</section>

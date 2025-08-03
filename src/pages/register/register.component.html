@@ -1,0 +1,107 @@
+<form class="w-1/2 mx-auto my-7 shadow-lg p-10" (ngSubmit)="signUpForm()" [formGroup]="signUp"  >
+        <div class="mb-6" >
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
+            <input formControlName="name" type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="John" required />
+        </div>
+        @if(signUp.get('name')?.errors && signUp.get('name')?.touched ){
+          <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+          <span class="sr-only">Danger</span>
+          <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (signUp.get('name')?.getError('required')){
+                  <li>name is requierd</li>
+                }
+                @if (signUp.get('name')?.getError('minLength') || signUp.get('name')?.getError('maxLength') )
+                {
+                  <li >character should be less than 3 and not more than 20</li>
+                }
+              </ul>
+          </div>
+        </div>
+        }
+        <div class="mb-6">
+            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Phone number</label>
+            <input formControlName="phone" type="tel"  placeholder="e.g., 01234567899" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"   />
+        </div>
+        @if(signUp.get('phone')?.errors && signUp.get('phone')?.touched ){
+          <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+          <span class="sr-only">Danger</span>
+          <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (signUp.get('phone')?.getError('required')){
+                  <li>phone is requierd</li>
+                }
+                @if (signUp.get('phone')?.getError('pattern')){
+                  <li>Enter a valid phone number</li>
+                }
+              </ul>
+          </div>
+        </div>
+        }
+      <div class="mb-6">
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email address</label>
+          <input formControlName="email" type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="john.doe@company.com" required />
+      </div>
+      @if(signUp.get('email')?.errors && signUp.get('email')?.touched ){
+          <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+          <span class="sr-only">Danger</span>
+          <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (signUp.get('email')?.getError('required')){
+                  <li>email is requierd</li>
+                }
+                @if (signUp.get('email')?.getError('email')  )
+                {
+                  <li >enter a valid email</li>
+                }
+              </ul>
+          </div>
+        </div>
+        }
+      <div class="mb-6">
+          <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+          <input formControlName="password" type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "  required />
+      </div>
+            @if(signUp.get('password')?.errors && signUp.get('password')?.touched )
+            {
+          <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+          <span class="sr-only">Danger</span>
+          <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (signUp.get('password')?.getError('required')){
+                  <li>password is requierd</li>
+                }
+                @if (signUp.get('password')?.getError('pattern')  )
+                {
+                  <li >password should contain at least spacefic caracter like: #$% ...</li>
+                }
+              </ul>
+          </div>
+        </div>
+      }
+      <div class="mb-6">
+          <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900">Confirm password</label>
+          <input formControlName="rePassword" type="password" id="confirm_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "  required />
+      </div>
+      @if (signUp.get('rePassword')?.errors && signUp.get('rePassword')?.touched) {
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+              <ul class="mt-1.5 list-disc list-inside">
+                @if(signUp.get('mismatch')){
+                  <li>password does not match</li>
+                }
+              </ul>
+            </div>
+      }
+      <!-- <div class="flex items-start mb-6">
+          <div class="flex items-center h-5">
+          <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
+          </div>
+          <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
+      </div> -->
+
+      <button type="submit"   class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:bg-cyan-400 cursor-none">Submit
+        @if (isLoaded) {
+          <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+        }
+      </button>
+</form>

@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+:root{
+      --text-font-family: "New York", Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+}
+
+span.main-span{
+  font-family: "Alegreya Sans", sans-serif;
+  font-style: italic;
+  font-weight: 600;
+}

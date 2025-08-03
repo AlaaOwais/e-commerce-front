@@ -1,0 +1,34 @@
+div.main-con {
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0,0,0,.5) , rgba(0,0,0,.5) ) , url("/img/cartback2.jpg");
+}
+.swiper-slide {
+  display: flex; /* Ensures content is centered/aligned if needed */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto; /* Allow height to adjust to content */
+}
+div.main-con div{
+
+/* position: absolute;
+bottom: 23px;
+left:50%;
+transform: translateX(-50%); */
+}
+
+owl-carousel-o {
+  display: block;
+  width: 100%;
+}
+
+.owl-carousel .owl-item {
+  display: flex;
+  justify-content: center;
+}
+h2{
+  font-family: "Alegreya Sans", sans-serif;
+  font-weight: 600;
+}

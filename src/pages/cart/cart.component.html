@@ -1,0 +1,56 @@
+<section>
+    <div class="container mx-auto py-8 px-4">
+        <h1 class="text-2xl font-bold mb-6">Your Shopping Cart</h1>
+      <!-- @if(ca) -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        @for (product of cartDetailes.products; track product.product._id) {
+            <!-- Cart Item -->
+            <div class="p-4 border-b">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <!-- Product Image -->
+                    <div class="w-full md:w-1/6">
+                        <img [src]="product.product.imageCover" alt="Product" class="w-full h-auto rounded">
+                    </div>
+
+                    <!-- Product Details -->
+                    <div class="w-full md:w-4/6">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-sm text-gray-500">Category: {{product.product.category.name}}</span>
+                            <span class="text-sm text-gray-500">Brand: {{product.product.brand.name}}</span>
+                            <h2 class="text-lg font-semibold">{{product.product.title}}</h2>
+                            <p class="text-gray-600">{{product.product.description}}</p>
+                        </div>
+                    </div>
+
+                    <!-- Price and Quantity -->
+                    <div class="w-full md:w-1/6 flex flex-col items-end justify-between">
+                        <span class="text-lg font-bold">EGP{{product.price}}</span>
+                        <button (click)="deleteItem(product.product._id)" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Delete</button>
+                        <div class="flex items-center mt-2">
+                            <button (click)="updateQuantity(product.product._id, product.count -1)" class="px-2 py-1 bg-gray-200 rounded-l">-</button>
+                            <span class="px-4 py-1 bg-gray-100">{{itemPerProd()}}</span>
+                            <button (click)="updateQuantity(product.product._id, product.count +1)" class="px-2 py-1 bg-gray-200 rounded-r">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+            <!-- Cart Summary -->
+            <div class="p-4 bg-gray-50">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <span class="font-semibold">Total ({{itemsNum()}}):</span>
+                        <span class="text-xl font-bold ml-2">EGP{{cartDetailes.totalCartPrice}}</span>
+                    </div>
+                    <button (click)="clearAll()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                        Clear All
+                    </button>
+                    <button [routerLink]="['/checkout',cartDetailes._id]" routerLinkActive="router-link-active"  class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                          Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
