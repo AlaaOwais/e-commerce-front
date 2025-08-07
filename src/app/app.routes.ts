@@ -4,7 +4,29 @@ import { Routes } from '@angular/router';
 import { MainComponent } from '../layout/main/main.component';
 import { authGuard } from '../core/guards/auth/auth.guard';
 import { loggedGuard } from '../core/guards/logged/logged.guard';
-
+import { RenderMode, ServerRoute } from '@angular/ssr';
+export const serverRoute :ServerRoute [ ] =[
+  {
+    path: 'category/:id',
+    renderMode: RenderMode.Server,
+  },
+  {
+    path: 'detailes/:id',
+    renderMode: RenderMode.Server,
+  },
+  {
+    path: 'prod-card/:id',
+    renderMode: RenderMode.Server,
+  },
+  {
+    path: 'checkout/:id',
+    renderMode: RenderMode.Server,
+  },
+  {
+    path: '**',
+    renderMode: RenderMode.Server, 
+  }
+]
 export const routes: Routes = [
   {path:"" , redirectTo:"home", pathMatch:'full'},
   {path:"" , component:MainComponent, canActivate:[authGuard] , title: "main" , children:[
@@ -13,7 +35,7 @@ export const routes: Routes = [
     {path:"category/:id" , loadComponent:()=> import('../pages/category/category.component').then(c=> c.CategoryComponent) , title:"category"},
     {path:"detailes/:id" , loadComponent:()=> import('../pages/details/details.component').then(c=> c.DetailsComponent), title:"detailes"},
     {path:"products" , loadComponent:()=> import('../pages/products/products.component').then(c=> c.ProductsComponent) , title:"products"},
-    {path:"prod-card/:id" , loadComponent:()=> import('../pages/product-card/product-card.component').then(c=> c.ProductCardComponent) , title:"products"},
+    {path:"prod-card/:id" , loadComponent:()=> import('../pages/product-card/product-card.component').then(c=> c.ProductCardComponent) , title:"products",},
     {path:"prod-card" , loadComponent:()=> import('../pages/product-card/product-card.component').then(c=> c.ProductCardComponent) , title:"products"},
     {path:"brands" , loadComponent:()=> import('../pages/brands/brands.component').then(c=> c.BrandsComponent)  , title:"Brands"},
     {path:"cart" , loadComponent:()=> import('../pages/cart/cart.component').then(c=> c.CartComponent)  , title:"cart"},
